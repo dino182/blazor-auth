@@ -1,9 +1,15 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration);
+
+builder.Services.Configure<CookieAuthenticationOptions>(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+{
+    options.Cookie.Name = ".BlazorTest.Auth";
+});
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
