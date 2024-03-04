@@ -1,3 +1,4 @@
+using BlazorAuth.Server;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Identity.Web;
@@ -52,5 +53,6 @@ app.UseStaticFiles();
 app.MapRazorPages().RequireAuthorization();
 app.MapControllers().RequireAuthorization();
 app.MapFallbackToFile("index.html").RequireAuthorization();
+app.MapLoginAndLogout().RequireAuthorization();
 
 app.Run();
